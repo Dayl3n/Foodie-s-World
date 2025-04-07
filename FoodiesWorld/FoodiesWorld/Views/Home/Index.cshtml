@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="h-100 d-flex flex-column">
+    <section class="row flex-grow-1 text-center bg-secondary" style="min-height:45%;"> <!-- main view section-->
+        <div class="col align-content-center container">
+            <h1 class="">Welcome in foodie's World</h1>
+            <h3 class="text-muted">Let your foodie journey begin</h3>
+            <div class="row mt-3 gap-5 d-flex justify-content-center">
+                <a class="btn btn-light col col-lg-2" asp-controller="Home" asp-action="Privacy"> Search </a>
+                <a class="btn btn-secondary col col-lg-2" asp-area="Identity" asp-page="/Account/Login"> Sign in </a>
+            </div>
+        </div> 
+    </section>
+    <section class="row flex-grow-0 w-75 m-auto">
+        <!--about website section-->
+        <div class="col">
+            <h2>
+                About
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam massa vel justo tincidunt, ac tincidunt mauris luctus. Mauris malesuada aliquam elit sagittis semper. Pellentesque molestie feugiat imperdiet. Cras purus nulla, rutrum vel justo id, pretium mollis neque. Maecenas fringilla rutrum nulla, in maximus ex consequat at. Donec suscipit enim sit amet dictum condimentum. Vestibulum ultrices placerat ex ut hendrerit. Nunc ac luctus tortor, eget vehicula sapien. Fusce in lacinia felis. Suspendisse potenti. Praesent faucibus dictum odio.
+            </p>
+        </div>
+        <div class="col"> <!--Image section-->
+            <img src="#" alt="here will be an img soon" />
+        </div>
+    </section>
+</section>
+
