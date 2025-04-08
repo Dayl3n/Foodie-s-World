@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using FoodiesWorld.Models;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FoodiesWorld.Data
 {
@@ -9,5 +11,8 @@ namespace FoodiesWorld.Data
             : base(options)
         {
         }
+        public DbSet<FoodiesWorld.Models.Opinion> Opinion { get; set; } = default!;
+        public DbSet<FoodiesWorld.Models.Restaurant> Restaurant { get; set; } = default!;
+        
     }
 }
