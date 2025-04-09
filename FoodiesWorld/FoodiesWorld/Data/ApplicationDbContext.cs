@@ -13,6 +13,7 @@ namespace FoodiesWorld.Data
         }
         public DbSet<FoodiesWorld.Models.Opinion> Opinion { get; set; } = default!;
         public DbSet<FoodiesWorld.Models.Restaurant> Restaurant { get; set; } = default!;
+        public DbSet<FoodiesWorld.Models.Visit> Visit { get; set; } = default!;
         
     }
 }

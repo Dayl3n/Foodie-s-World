@@ -9,6 +9,7 @@
         public string Address { get; set; }
 
         public ICollection<Opinion>? opinions { get; set; } = new List<Opinion>();
+        public ICollection<Visit>? visits { get; set; } = new List<Visit>();
 
         public Restaurant() { }
     }

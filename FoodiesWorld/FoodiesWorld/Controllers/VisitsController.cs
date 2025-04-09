@@ -7,38 +7,29 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FoodiesWorld.Data;
 using FoodiesWorld.Models;
-using Microsoft.AspNetCore.Authorization;
-using System.Security;
 using Microsoft.AspNetCore.Identity;
 
 namespace FoodiesWorld.Controllers
 {
-    public class OpinionsController : Controller
+    public class VisitsController : Controller
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<User> _userManager;
 
-        public OpinionsController(ApplicationDbContext context, UserManager<User> userManager)
+        public VisitsController(ApplicationDbContext context, UserManager<User> userManager)
         {
             _context = context;
             _userManager = userManager;
         }
 
-        // GET: Opinions
+        // GET: Visits
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Opinion.Include(o => o.Restaurant).Include(o => o.User);
+            var applicationDbContext = _context.Visit.Include(v => v.Restaurant).Include(v => v.User);
             return View(await applicationDbContext.ToListAsync());
         }
 
-        //Get Opinions/SearchOpinion?resurantId=?
-        public async Task<IActionResult> SearchOpinion(string restaurantId)
-        {
-            var applicationDbContext = _context.Opinion.Include(o => o.Restaurant).Include(o => o.User).Where(x=> x.RestaurantId==restaurantId);
-            return View("index",await applicationDbContext.ToListAsync());
-        }
-
-        // GET: Opinions/Details/5
+        // GET: Visits/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -46,23 +37,22 @@ namespace FoodiesWorld.Controllers
                 return NotFound();
             }
 
-            var opinion = await _context.Opinion
-                .Include(o => o.Restaurant)
-                .Include(o => o.User)
+            var visit = await _context.Visit
+                .Include(v => v.Restaurant)
+                .Include(v => v.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (opinion == null)
+            if (visit == null)
             {
                 return NotFound();
             }
 
-            return View(opinion);
+            return View(visit);
         }
 
-        // GET: Opinions/Create
+        // GET: Visits/Create
         public IActionResult Create(string restaurantId)
         {
-
-            Opinion opinion = new Opinion
+            Visit visit = new Visit
             {
                 Id = Guid.NewGuid().ToString(),
                 RestaurantId = restaurantId,
@@ -73,29 +63,28 @@ namespace FoodiesWorld.Controllers
 
             ViewData["RestaurantId"] = new SelectList(_context.Restaurant, "Id", "Name", restaurantId);
             ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Email");
-            return View(opinion);
+            return View(visit);
         }
 
-        // POST: Opinions/Create
+        // POST: Visits/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,RestaurantId,UserId,Rating,Description,Date")] Opinion opinion)
+        public async Task<IActionResult> Create([Bind("Id,Date,IsBooked,RestaurantId,UserId")] Visit visit)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(opinion);
+                _context.Add(visit);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RestaurantId"] = new SelectList(_context.Restaurant, "Id", "Name", opinion.RestaurantId);
-            ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Id", opinion.UserId);
-            return View(opinion);
+            ViewData["RestaurantId"] = new SelectList(_context.Restaurant, "Id", "Id", visit.RestaurantId);
+            ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Id", visit.UserId);
+            return View(visit);
         }
 
-        // GET: Opinions/Edit/5
+        // GET: Visits/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -103,24 +92,24 @@ namespace FoodiesWorld.Controllers
                 return NotFound();
             }
 
-            var opinion = await _context.Opinion.FindAsync(id);
-            if (opinion == null)
+            var visit = await _context.Visit.FindAsync(id);
+            if (visit == null)
             {
                 return NotFound();
             }
-            ViewData["RestaurantId"] = new SelectList(_context.Restaurant, "Id", "Id", opinion.RestaurantId);
-            ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Id", opinion.UserId);
-            return View(opinion);
+            ViewData["RestaurantId"] = new SelectList(_context.Restaurant, "Id", "Id", visit.RestaurantId);
+            ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Id", visit.UserId);
+            return View(visit);
         }
 
-        // POST: Opinions/Edit/5
+        // POST: Visits/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,RestaurantId,UserId,Rating,Description")] Opinion opinion)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Date,IsBooked,RestaurantId,UserId")] Visit visit)
         {
-            if (id != opinion.Id)
+            if (id != visit.Id)
             {
                 return NotFound();
             }
@@ -129,12 +118,12 @@ namespace FoodiesWorld.Controllers
             {
                 try
                 {
-                    _context.Update(opinion);
+                    _context.Update(visit);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!OpinionExists(opinion.Id))
+                    if (!VisitExists(visit.Id))
                     {
                         return NotFound();
                     }
@@ -145,12 +134,12 @@ namespace FoodiesWorld.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RestaurantId"] = new SelectList(_context.Restaurant, "Id", "Id", opinion.RestaurantId);
-            ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Id", opinion.UserId);
-            return View(opinion);
+            ViewData["RestaurantId"] = new SelectList(_context.Restaurant, "Id", "Id", visit.RestaurantId);
+            ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Id", visit.UserId);
+            return View(visit);
         }
 
-        // GET: Opinions/Delete/5
+        // GET: Visits/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -158,36 +147,36 @@ namespace FoodiesWorld.Controllers
                 return NotFound();
             }
 
-            var opinion = await _context.Opinion
-                .Include(o => o.Restaurant)
-                .Include(o => o.User)
+            var visit = await _context.Visit
+                .Include(v => v.Restaurant)
+                .Include(v => v.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (opinion == null)
+            if (visit == null)
             {
                 return NotFound();
             }
 
-            return View(opinion);
+            return View(visit);
         }
 
-        // POST: Opinions/Delete/5
+        // POST: Visits/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var opinion = await _context.Opinion.FindAsync(id);
-            if (opinion != null)
+            var visit = await _context.Visit.FindAsync(id);
+            if (visit != null)
             {
-                _context.Opinion.Remove(opinion);
+                _context.Visit.Remove(visit);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool OpinionExists(string id)
+        private bool VisitExists(string id)
         {
-            return _context.Opinion.Any(e => e.Id == id);
+            return _context.Visit.Any(e => e.Id == id);
         }
     }
 }

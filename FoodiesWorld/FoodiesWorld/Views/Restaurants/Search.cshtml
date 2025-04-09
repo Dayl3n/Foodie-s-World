@@ -55,7 +55,7 @@
                     <td>
                         <a asp-controller="Opinions" asp-action="SearchOpinion" asp-route-restaurantId="@item.Restaurant.Id">View Opinion</a> |
                         <a asp-controller="Opinions" asp-action="Create" asp-route-restaurantId="@item.Restaurant.Id">Give Opinion</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Restaurant.Id">Add To visit</a>
+                        <a asp-controller="Visits" asp-action="Create" asp-route-restaurantId="@item.Restaurant.Id">Add To visit</a>
                     </td>
                 </tr>
             }
