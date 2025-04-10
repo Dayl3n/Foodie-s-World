@@ -41,9 +41,24 @@ namespace FoodiesWorld.Controllers
         }
 
         // GET: Restaurants/Search
-        public async Task<IActionResult> Search()
+        public async Task<IActionResult> Search(int pg=1)
         {
-            var restaurants = await _context.Restaurant.ToListAsync();
+
+            const int pageSize = 1; //Setting number of restaurants in one view
+            if(pg<1)
+                pg = 1;
+
+            int restCount = _context.Restaurant.Count();
+
+            var RouteData = new Dictionary<string, string>();
+
+            var pager = new Pager(restCount,pg,"Restaurants","Search", RouteData, pageSize);
+
+            int recSkip = (pg - 1) * pageSize;
+
+
+            var restaurants = await _context.Restaurant.Skip(recSkip).Take(pageSize).ToListAsync();
+            
 
             var ratings = await _context.Opinion
                 .GroupBy(o => o.RestaurantId)
@@ -57,6 +72,8 @@ namespace FoodiesWorld.Controllers
                 Restaurant = r,
                 AvgRating = ratings.FirstOrDefault(x => x.RestaurantId == r.Id)?.AverageRating
             }).ToList();
+
+            this.ViewBag.Pager = pager;
 
             return View(model);
         }

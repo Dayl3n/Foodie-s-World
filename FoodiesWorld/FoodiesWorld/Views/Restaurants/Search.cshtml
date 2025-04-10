@@ -2,63 +2,80 @@
 
 @{
     ViewData["Title"] = "Search";
+
+    Pager pager = new Pager();
+
+    int pageNo = 0;
+
+    if(ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
 }
 
 <div class="w-75 m-auto">
 
-<h1>Search</h1>
+    <h1>Search</h1>
     <form asp-action="SearchResult" method="post" class="form-group d-flex">
         <label for="Phrase" class="control-label"></label>
         <input name="Phrase" class="form-control" />
         <input type="submit" value="Search" class="btn btn-outline-dark"/>
     </form>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Restaurant.Name)
-                </th>
-                <th>
-                    Rating
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Restaurant.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Restaurant.City)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Restaurant.Address)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+
+    <div class="mt-5">
+      
+        <table class="table">
+        
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Restaurant.Name)
-                    </td>
-                    <td>
-                        @(item.AvgRating.HasValue ? item.AvgRating.Value.ToString("0.00") : "No ratings")
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Restaurant.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Restaurant.City)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Restaurant.Address)
-                    </td>
-                    <td>
-                        <a asp-controller="Opinions" asp-action="SearchOpinion" asp-route-restaurantId="@item.Restaurant.Id">View Opinion</a> |
-                        <a asp-controller="Opinions" asp-action="Create" asp-route-restaurantId="@item.Restaurant.Id">Give Opinion</a> |
-                        <a asp-controller="Visits" asp-action="Create" asp-route-restaurantId="@item.Restaurant.Id">Add To visit</a>
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Restaurant.Name)
+                    </th>
+                    <th>
+                        Rating
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Restaurant.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Restaurant.City)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Restaurant.Address)
+                    </th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Restaurant.Name)
+                        </td>
+                        <td>
+                            @(item.AvgRating.HasValue ? item.AvgRating.Value.ToString("0.00") : "No ratings")
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Restaurant.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Restaurant.City)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Restaurant.Address)
+                        </td>
+                        <td>
+                            <a asp-controller="Opinions" asp-action="SearchOpinion" asp-route-restaurantId="@item.Restaurant.Id">View Opinion</a> |
+                            <a asp-controller="Opinions" asp-action="Create" asp-route-restaurantId="@item.Restaurant.Id">Give Opinion</a> |
+                            <a asp-controller="Visits" asp-action="Create" asp-route-restaurantId="@item.Restaurant.Id">Add To visit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+            
+        <partial name="_Pagination"  model="@pager"/>
+    </div>
 </div>

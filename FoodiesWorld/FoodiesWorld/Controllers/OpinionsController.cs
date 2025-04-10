@@ -27,14 +27,30 @@ namespace FoodiesWorld.Controllers
         // GET: Opinions
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Opinion.Include(o => o.Restaurant).Include(o => o.User);
-            return View(await applicationDbContext.ToListAsync());
+            return RedirectToAction("Search", "Restaurants");
         }
 
         //Get Opinions/SearchOpinion?resurantId=?
-        public async Task<IActionResult> SearchOpinion(string restaurantId)
+        public async Task<IActionResult> SearchOpinion(string restaurantId,int pg=1)
         {
-            var applicationDbContext = _context.Opinion.Include(o => o.Restaurant).Include(o => o.User).Where(x=> x.RestaurantId==restaurantId);
+
+            const int pageSize = 3; //Setting number of revies in one view
+            if (pg < 1)
+                pg = 1;
+
+            int reviesCount = _context.Opinion.Include(o => o.Restaurant).Include(o => o.User).Where(x => x.RestaurantId == restaurantId).Count();
+
+            var RouteData = new Dictionary<string, string>
+                {
+                    { "restaurantId", restaurantId } //additional argument
+                };
+
+            var pager = new Pager(reviesCount, pg,"Opinions","SearchOpinion", RouteData, pageSize);
+
+            int recSkip = (pg - 1) * pageSize;
+            this.ViewBag.Pager = pager;
+
+            var applicationDbContext = _context.Opinion.Include(o => o.Restaurant).Include(o => o.User).Where(x=> x.RestaurantId==restaurantId).Skip(recSkip).Take(pageSize);
             return View("index",await applicationDbContext.ToListAsync());
         }
 
@@ -67,7 +83,7 @@ namespace FoodiesWorld.Controllers
                 Id = Guid.NewGuid().ToString(),
                 RestaurantId = restaurantId,
                 UserId = _userManager.GetUserId(User),
-                Date = DateTime.UtcNow
+                Date = DateTime.UtcNow.AddHours(2)
             };
 
 
@@ -92,7 +108,7 @@ namespace FoodiesWorld.Controllers
             }
             ViewData["RestaurantId"] = new SelectList(_context.Restaurant, "Id", "Name", opinion.RestaurantId);
             ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Id", opinion.UserId);
-            return View(opinion);
+            return RedirectToAction("Search", "Restaurants");
         }
 
         // GET: Opinions/Edit/5
@@ -110,7 +126,7 @@ namespace FoodiesWorld.Controllers
             }
             ViewData["RestaurantId"] = new SelectList(_context.Restaurant, "Id", "Id", opinion.RestaurantId);
             ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Id", opinion.UserId);
-            return View(opinion);
+            return View("Search");
         }
 
         // POST: Opinions/Edit/5
