@@ -1,4 +1,8 @@
 ﻿@model IEnumerable<FoodiesWorld.Models.Opinion>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
 
 @{
     ViewData["Title"] = "Index";
@@ -12,10 +16,9 @@
 }
 
 <div class="w-75 m-auto">
-<h1>Cokolwiek</h1>
+<h1>Revies</h1>
 
 <table class="table">
-
     <thead>
         <tr>
             <th>

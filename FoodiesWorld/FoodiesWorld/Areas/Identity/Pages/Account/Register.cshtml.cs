@@ -159,6 +159,7 @@ namespace FoodiesWorld.Areas.Identity.Pages.Account
         {
             try
             {
+
                 return Activator.CreateInstance<User>();
             }
             catch

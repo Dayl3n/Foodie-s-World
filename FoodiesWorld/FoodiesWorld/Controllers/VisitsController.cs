@@ -29,6 +29,14 @@ namespace FoodiesWorld.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+        // Get: Visits/Calendar
+        public async Task<IActionResult> Calendar()
+        {
+            var applicationDbContext = _context.Visit.Include(v => v.Restaurant).Include(v => v.User);
+            ViewData["RestaurantCities"] = new SelectList(_context.Restaurant, "City", "City");
+            return View(await applicationDbContext.ToListAsync());
+        }
+
         // GET: Visits/Details/5
         public async Task<IActionResult> Details(string id)
         {

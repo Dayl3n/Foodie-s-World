@@ -3,36 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|c:\\users\\kubal\\documents\\nowy folder\\foodie-s-world\\foodiesworld\\foodiesworld\\controllers\\opinionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|solutionrelative:foodiesworld\\controllers\\opinionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|c:\\users\\kubal\\documents\\nowy folder\\foodie-s-world\\foodiesworld\\foodiesworld\\views\\shared\\_pagination.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|solutionrelative:foodiesworld\\views\\shared\\_pagination.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|c:\\users\\kubal\\documents\\nowy folder\\foodie-s-world\\foodiesworld\\foodiesworld\\controllers\\restaurantscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|solutionrelative:foodiesworld\\controllers\\restaurantscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|c:\\users\\kubal\\documents\\nowy folder\\foodie-s-world\\foodiesworld\\foodiesworld\\models\\pager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|solutionrelative:foodiesworld\\models\\pager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|c:\\users\\kubal\\documents\\nowy folder\\foodie-s-world\\foodiesworld\\foodiesworld\\views\\opinions\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|solutionrelative:foodiesworld\\views\\opinions\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|c:\\users\\kubal\\documents\\nowy folder\\foodie-s-world\\foodiesworld\\foodiesworld\\views\\restaurants\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|solutionrelative:foodiesworld\\views\\restaurants\\search.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|c:\\users\\kubal\\documents\\nowy folder\\foodie-s-world\\foodiesworld\\foodiesworld\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|solutionrelative:foodiesworld\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|c:\\users\\kubal\\documents\\nowy folder\\foodie-s-world\\foodiesworld\\foodiesworld\\views\\opinions\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|solutionrelative:foodiesworld\\views\\opinions\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|c:\\users\\kubal\\documents\\nowy folder\\foodie-s-world\\foodiesworld\\foodiesworld\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06195B37-0450-4A72-A3D1-0A2F8EC7B7B8}|FoodiesWorld\\FoodiesWorld.csproj|solutionrelative:foodiesworld\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,110 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_Pagination.cshtml",
-              "DocumentMoniker": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Views\\Shared\\_Pagination.cshtml",
-              "RelativeDocumentMoniker": "FoodiesWorld\\Views\\Shared\\_Pagination.cshtml",
-              "ToolTip": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Views\\Shared\\_Pagination.cshtml",
-              "RelativeToolTip": "FoodiesWorld\\Views\\Shared\\_Pagination.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACQAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-09T23:30:11.489Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Search.cshtml",
-              "DocumentMoniker": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Views\\Restaurants\\Search.cshtml",
-              "RelativeDocumentMoniker": "FoodiesWorld\\Views\\Restaurants\\Search.cshtml",
-              "ToolTip": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Views\\Restaurants\\Search.cshtml",
-              "RelativeToolTip": "FoodiesWorld\\Views\\Restaurants\\Search.cshtml",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAE4AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-09T23:04:51.73Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Views\\Opinions\\Create.cshtml",
-              "RelativeDocumentMoniker": "FoodiesWorld\\Views\\Opinions\\Create.cshtml",
-              "ToolTip": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Views\\Opinions\\Create.cshtml",
-              "RelativeToolTip": "FoodiesWorld\\Views\\Opinions\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-09T14:07:14.572Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "FoodiesWorld\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "FoodiesWorld\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-09T14:02:32.929Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RestaurantsController.cs",
-              "DocumentMoniker": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Controllers\\RestaurantsController.cs",
-              "RelativeDocumentMoniker": "FoodiesWorld\\Controllers\\RestaurantsController.cs",
-              "ToolTip": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Controllers\\RestaurantsController.cs",
-              "RelativeToolTip": "FoodiesWorld\\Controllers\\RestaurantsController.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAowDIAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T22:53:39.864Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Pager.cs",
-              "DocumentMoniker": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Models\\Pager.cs",
-              "RelativeDocumentMoniker": "FoodiesWorld\\Models\\Pager.cs",
-              "ToolTip": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Models\\Pager.cs",
-              "RelativeToolTip": "FoodiesWorld\\Models\\Pager.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAQwBEAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T22:45:18.106Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Views\\Opinions\\Index.cshtml",
-              "RelativeDocumentMoniker": "FoodiesWorld\\Views\\Opinions\\Index.cshtml",
-              "ToolTip": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Views\\Opinions\\Index.cshtml",
-              "RelativeToolTip": "FoodiesWorld\\Views\\Opinions\\Index.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAADUAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-09T14:34:37.88Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "OpinionsController.cs",
-              "DocumentMoniker": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Controllers\\OpinionsController.cs",
-              "RelativeDocumentMoniker": "FoodiesWorld\\Controllers\\OpinionsController.cs",
-              "ToolTip": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Controllers\\OpinionsController.cs",
-              "RelativeToolTip": "FoodiesWorld\\Controllers\\OpinionsController.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAA5wC8AAABLAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Program.cs",
+              "RelativeDocumentMoniker": "FoodiesWorld\\Program.cs",
+              "ToolTip": "C:\\Users\\kubal\\Documents\\Nowy folder\\Foodie-s-World\\FoodiesWorld\\FoodiesWorld\\Program.cs",
+              "RelativeToolTip": "FoodiesWorld\\Program.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T14:10:23.104Z",
+              "WhenOpened": "2025-04-11T00:49:06.66Z",
               "EditorCaption": ""
             }
           ]

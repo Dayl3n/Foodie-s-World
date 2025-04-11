@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+
+<!DOCTYPE html>
 <html class="h-100" lang="en">
 <head>
     <meta charset="utf-8" />
@@ -6,18 +11,19 @@
     <title>@ViewData["Title"] - FoodiesWorld</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FoodiesWorld.styles.css" asp-append-version="true" />
     <style>
         *{
-            padding:0;
-            margin:0;
+        padding:0;
+        margin:0;
         }
 
         html, body {
-            margin: 0;
-            height: 100%;
-            overflow: hidden
+        margin: 0;
+        height: 100%;
+        overflow-x: hidden
         }
     </style>
 </head>
@@ -27,7 +33,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FoodiesWorld</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -39,7 +45,7 @@
                             <div class="vr mt-2" style="font-size:3em; width:2px"></div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="..." asp-action="...">Top Restaurants</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Restaurants" asp-action="ShowTopRestaurants">Top Restaurants</a>
                         </li>
                         <li>
                             <div class="vr mt-2" style="font-size:3em; width:2px"></div>
@@ -50,12 +56,34 @@
                         <li>
                             <div class="vr mt-2" style="font-size:3em; width:2px"></div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="..." asp-action="...">My Calendar</a>
-                        </li>
-                        <li>
-                            <div class="vr mt-2" style="font-size:3em; width:2px"></div>
-                        </li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {               
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Visits" asp-action="Calendar">My Calendar</a>
+                            </li>
+                            <li>
+                                <div class="vr mt-2" style="font-size:3em; width:2px"></div>
+                            </li>
+
+                            @if (User.IsInRole("Admin"))
+                            {                     
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Opinions" asp-action="ShowAllOponions">All Revies</a>
+                                </li>
+                                <li>
+                                    <div class="vr mt-2" style="font-size:3em; width:2px"></div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Restaurants" asp-action="Index">All Restaurants</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Opinions" asp-action="ShowOponions">My Revies</a>
+                                </li>
+                            }
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -68,7 +96,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top h-10 footer text-muted">
         <div class="container">
             &copy; 2025 - FoodiesWorld - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
