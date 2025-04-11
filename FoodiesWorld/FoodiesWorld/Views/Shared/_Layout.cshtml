@@ -68,7 +68,7 @@
                             @if (User.IsInRole("Admin"))
                             {                     
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Opinions" asp-action="ShowAllOponions">All Revies</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Opinions" asp-action="AllRevies">All Revies</a>
                                 </li>
                                 <li>
                                     <div class="vr mt-2" style="font-size:3em; width:2px"></div>
@@ -80,7 +80,7 @@
                             else
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Opinions" asp-action="ShowOponions">My Revies</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Opinions" asp-action="ShowOpinions">My Revies</a>
                                 </li>
                             }
                         }

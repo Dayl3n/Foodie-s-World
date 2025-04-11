@@ -30,11 +30,55 @@ namespace FoodiesWorld.Controllers
             return RedirectToAction("Search", "Restaurants");
         }
 
+        // Get: Opinions/AllRevies (only admins)
+
+        [Authorize(Roles="Admin")] 
+        public async Task<IActionResult> AllRevies(int pg=1)
+        {
+            const int pageSize = 5; //Setting number of revies in one view
+            if (pg < 1)
+                pg = 1;
+
+            int reviesCount = _context.Opinion.Include(o => o.Restaurant).Include(o => o.User).Count();
+
+            var RouteData = new Dictionary<string, string>();
+
+            var pager = new Pager(reviesCount, pg, "Opinions", "AllRevies", RouteData, pageSize);
+
+
+            int revsSkip = (pg - 1) * pageSize;
+            var revies = _context.Opinion.Include(o => o.Restaurant).Include(o => o.User).Skip(revsSkip).Take(pageSize);
+            this.ViewBag.Pager = pager;
+
+            return View("Index",revies);
+        }
+
+        public async Task<IActionResult> ShowOpinions(int pg = 1)
+        {
+            const int pageSize = 5; //Setting number of revies in one view
+            if (pg < 1)
+                pg = 1;
+
+            int reviesCount = _context.Opinion.Include(o => o.Restaurant).Include(o => o.User).Where(u => u.UserId == _userManager.GetUserId(User)).Count();
+
+            var RouteData = new Dictionary<string, string>();
+
+            var pager = new Pager(reviesCount, pg, "Opinions", "ShowOpinions", RouteData, pageSize);
+
+
+            int revsSkip = (pg - 1) * pageSize;
+            var revies = _context.Opinion.Include(o => o.Restaurant).Include(o => o.User).Where( u => u.UserId==_userManager.GetUserId(User)).Skip(revsSkip).Take(pageSize);
+            this.ViewBag.Pager = pager;
+
+            return View("Index", revies);
+        }
+
+
         //Get Opinions/SearchOpinion?resurantId=?
         public async Task<IActionResult> SearchOpinion(string restaurantId,int pg=1)
         {
 
-            const int pageSize = 3; //Setting number of revies in one view
+            const int pageSize = 5; //Setting number of revies in one view
             if (pg < 1)
                 pg = 1;
 
@@ -126,7 +170,7 @@ namespace FoodiesWorld.Controllers
             }
             ViewData["RestaurantId"] = new SelectList(_context.Restaurant, "Id", "Id", opinion.RestaurantId);
             ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Id", opinion.UserId);
-            return View("Search");
+            return View(opinion);
         }
 
         // POST: Opinions/Edit/5

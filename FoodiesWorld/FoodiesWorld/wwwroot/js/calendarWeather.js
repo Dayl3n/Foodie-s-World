@@ -1,4 +1,6 @@
-﻿function replacePolishChars(text) {
+﻿
+//function replaces polish symbols, just in case 
+function replacePolishChars(text) {
     const polishToAscii = {
         ą: 'a',
         ć: 'c',
@@ -19,20 +21,24 @@
         Ź: 'Z',
         Ż: 'Z'
     }
+
     return text.replace(
         /[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/g,
         (char) => polishToAscii[char] || char
     )
 }
+
+//apiKey from OpenWeatherMap API
 const apiKey = '77c3a88dfaefeb225ff57827b1b21db9'
 let cityInput = $('#SelectRestaurant');
 
 
 function GetWeatherDetails(name, lat, lon, country, state)
 {
+    //forecast API
     let FORECAST_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
-    let dates = [];
+    let dates = [];//needed for display porposes 
     let months = [];
     fetch(FORECAST_API_URL)
         .then((response) => {
@@ -42,9 +48,10 @@ function GetWeatherDetails(name, lat, lon, country, state)
             return response.json()
         })
         .then(data => {
-            for(let i = 0; i < data.list.length; i++){
+            for (let i = 0; i < data.list.length; i++){
+
+                //checks if day is already in list if so, skip
                 let forecastDate = new Date(data.list[i].dt_txt);
-                console.log(forecastDate.getMonth());
                 if (!dates.includes(forecastDate.getDate())) {
                     dates.push(forecastDate.getDate());
                     months.push(forecastDate.getMonth()+1);
@@ -67,8 +74,9 @@ function GetWeatherDetails(name, lat, lon, country, state)
 }
 
 function GetCityCoordinates() {
-    let cityName = "Kraków" //replacePolishChars($('#SelectRestaurant').val().Trim());
+    let cityName = replacePolishChars($('#SelectRestaurant').val());
 
+    //API for getting Coordinates needed for Forecast API
     let GEOCODING_API_URL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
 
     fetch(GEOCODING_API_URL).then(res => res.json()).then(data => {
@@ -80,6 +88,8 @@ function GetCityCoordinates() {
 }
 
 
+
+//Hides icons if small window
 $(window).resize(function () {
     if ($(window).width() < 960) {
         $('.icon').hide();
@@ -87,12 +97,19 @@ $(window).resize(function () {
 });
 
 
+
 $(document).ready(function () {
+    //for small screens
     if ($(window).width() < 960) {
         $('.icon').hide();
     }
+
+    //initailize weather View 
     GetCityCoordinates();
+
+    //Select menu change function
     $('#SelectRestaurant').change(function () {
+        $('#weatherWidgetContainer').html('');
         GetCityCoordinates();
     })
 });

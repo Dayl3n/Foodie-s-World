@@ -25,15 +25,16 @@ namespace FoodiesWorld.Controllers
         // GET: Visits
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Visit.Include(v => v.Restaurant).Include(v => v.User);
-            return View(await applicationDbContext.ToListAsync());
+            return RedirectToAction("Calendar", "Visits"); //Return to Calendar View
         }
 
         // Get: Visits/Calendar
         public async Task<IActionResult> Calendar()
         {
             var applicationDbContext = _context.Visit.Include(v => v.Restaurant).Include(v => v.User);
-            ViewData["RestaurantCities"] = new SelectList(_context.Restaurant, "City", "City");
+
+            //ViewData for select menu in the Calendar.cshtml
+            ViewData["RestaurantCities"] = new SelectList(_context.Restaurant.Select(r => r.City).Distinct(), "City");
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -60,6 +61,8 @@ namespace FoodiesWorld.Controllers
         // GET: Visits/Create
         public IActionResult Create(string restaurantId)
         {
+
+            // Renders pre-filled data in visit creation form:
             Visit visit = new Visit
             {
                 Id = Guid.NewGuid().ToString(),
@@ -68,9 +71,6 @@ namespace FoodiesWorld.Controllers
                 Date = DateTime.UtcNow
             };
 
-
-            ViewData["RestaurantId"] = new SelectList(_context.Restaurant, "Id", "Name", restaurantId);
-            ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Email");
             return View(visit);
         }
 

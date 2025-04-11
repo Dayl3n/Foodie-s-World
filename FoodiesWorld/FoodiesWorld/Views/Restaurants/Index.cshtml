@@ -1,59 +1,70 @@
-﻿@model IEnumerable<FoodiesWorld.Models.RestaurantWithRatings>
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<FoodiesWorld.Models.RestaurantWithRatings>
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Restaurant.Name)
-            </th>
-            <th>
-                Rating
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Restaurant.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Restaurant.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Restaurant.Address)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                    @Html.DisplayFor(modelItem => item.Restaurant.Name)
-            </td>
-            <td>
-                    @(item.AvgRating.HasValue ? item.AvgRating.Value.ToString("0.00") : "No ratings")
-            </td>
-            <td>
-                    @Html.DisplayFor(modelItem => item.Restaurant.Description)
-            </td>
-            <td>
-                    @Html.DisplayFor(modelItem => item.Restaurant.City)
-            </td>
-            <td>
-                    @Html.DisplayFor(modelItem => item.Restaurant.Address)
-            </td>
-            <td>
-                    <a asp-controller="Opinions" asp-action="SearchOpinion" asp-route-restaurantId="@item.Restaurant.Id">View Opinion</a> |
-                    <a asp-controller="Opinion" asp-action="Create" asp-route-restaurantId="@item.Restaurant.Id">Give Opinion</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Restaurant.Id">Add To visit</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="w-75 m-auto">
+
+    <h1>Restaurants</h1>
+
+    @if (SignInManager.IsSignedIn(User)&&User.IsInRole("Admin"))
+    { 
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+    }
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Restaurant.Name)
+                </th>
+                <th>
+                    Rating
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Restaurant.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Restaurant.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Restaurant.Address)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Restaurant.Name)
+                </td>
+                <td>
+                        @(item.AvgRating.HasValue ? item.AvgRating.Value.ToString("0.00") : "No ratings")
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Restaurant.Description)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Restaurant.City)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Restaurant.Address)
+                </td>
+                <td>
+                        <a asp-controller="Opinions" asp-action="SearchOpinion" asp-route-restaurantId="@item.Restaurant.Id">View Opinion</a> |
+                        <a asp-controller="Opinion" asp-action="Create" asp-route-restaurantId="@item.Restaurant.Id">Give Opinion</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Restaurant.Id">Add To visit</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>

@@ -24,6 +24,32 @@ namespace FoodiesWorld.Controllers
         {
             var restaurants = await _context.Restaurant.ToListAsync();
 
+
+            //Calculate avg rating for restaurant
+            var ratings = await _context.Opinion
+                .GroupBy(o => o.RestaurantId)
+                .Select(g => new {
+                    RestaurantId = g.Key,
+                    AverageRating = g.Average(o => o.Rating)
+                }).ToListAsync();
+
+
+            //create a model for ratings 
+            var model = restaurants.Select(r => new RestaurantWithRatings
+            {
+                Restaurant = r,
+                AvgRating = ratings.FirstOrDefault(x => x.RestaurantId == r.Id)?.AverageRating
+            }).ToList();
+
+            return View(model);
+        }
+
+        // GET: Restaurants/ShowTopRestaurants
+        //Sorting Restaurants by avg Rating and return x 
+        public async Task<IActionResult> ShowTopRestaurants()
+        {
+            var restaurants = await _context.Restaurant.ToListAsync();
+
             var ratings = await _context.Opinion
                 .GroupBy(o => o.RestaurantId)
                 .Select(g => new {
@@ -35,22 +61,22 @@ namespace FoodiesWorld.Controllers
             {
                 Restaurant = r,
                 AvgRating = ratings.FirstOrDefault(x => x.RestaurantId == r.Id)?.AverageRating
-            }).ToList();
+            }).OrderByDescending(x=>x.AvgRating).Take(5).ToList();
 
-            return View(model);
+            return View("Index",model);
         }
 
         // GET: Restaurants/Search
         public async Task<IActionResult> Search(int pg=1)
         {
 
-            const int pageSize = 1; //Setting number of restaurants in one view
+            const int pageSize = 5; //Setting number of restaurants in one view
             if(pg<1)
                 pg = 1;
 
-            int restCount = _context.Restaurant.Count();
+            int restCount = _context.Restaurant.Count(); 
 
-            var RouteData = new Dictionary<string, string>();
+            var RouteData = new Dictionary<string, string>(); //its blank cose no additional arguments are needed 
 
             var pager = new Pager(restCount,pg,"Restaurants","Search", RouteData, pageSize);
 
@@ -121,7 +147,11 @@ namespace FoodiesWorld.Controllers
         // GET: Restaurants/Create
         public IActionResult Create()
         {
-            return View();
+            Restaurant restaurant = new Restaurant
+            {
+                Id = Guid.NewGuid().ToString()
+            };
+            return View(restaurant);
         }
 
         // POST: Restaurants/Create
